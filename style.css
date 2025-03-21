@@ -698,6 +698,96 @@ footer h1{
   font-size:30px
 }
 
+.menu-icon{
+  font-size:35px;
+  cursor:pointer;
+  display:none;
+}
+
+.sidebar{
+  position:fixed;
+  right:0;
+  top:0;
+  bottom:70%;
+  width:0;
+  background-color: #000000b8;
+  backdrop-filter:blur(10px);
+  z-index:999;
+  box-shadow: 0 0 20px rgba(211,211,211,0.411);
+  border-bottom-left-radius:100%;
+  opacity:0;
+}
+.close-icon{
+  font-size:50px;
+  color:lightgray;
+  padding-left:10px;
+  cursor:pointer;
+}
+
+/* SIDEBAR*/
+
+.sidebar ul{
+  padding-left:20px;
+}
+
+.sidebar ul li{
+  list-style:none;
+  margin-bottom:30px;
+}
+
+.sidebar ul li a{
+  text-decoration:none;
+  color: lightgray;
+  font-size:30px;
+  font-weight:700;
+  text-shadow: 0 0 15px rgba(128,128,128,0.256);
+}
+
+.sidebar .social-icons{
+  padding-left:20px;
+  margin-top:60px;
+  text-wrap:nowrap;
+}
+
+.sidebar .social-icons a{
+  font-size:35px;
+  padding:5px 5px;
+  cursor:pointer;
+}
+
+/* Open sidebar*/
+.sidebar.open-sidebar{
+  animation: openSidebarAnimation 1.5s forwards;
+}
+
+@keyframes openSidebarAnimation{
+  to {
+    width:80%;
+    opacity:1;
+    bottom:0;
+    border-radius:0;
+  }
+}
+
+.sidebar.close-sidebar{
+  animation: closeSidebarAnimation 1.5s forwards;
+}
+
+@keyframes closeSidebarAnimation{
+  from {
+    width:80%;
+    opacity:1;
+    bottom:0;
+    border-radius:0;
+  }
+  to {
+    width:0;
+    opacity:0;
+    bottom:70%;
+    border-bottom-left-radius:50%;
+  }
+}
+
 .autoBlur{
   animation: autoBlurAnimation linear both;
   animation-timeline:view();
@@ -860,6 +950,9 @@ footer h1{
   .autoBlur{
     animation:none;
   }
+  .fadeinRight{
+    animation:none;
+  }
   .hero-info{
     bottom:5%;
   }
@@ -945,7 +1038,20 @@ text-wrap:wrap;
  .project-vidbox{
   min-width:200px;
  }
-
+ video.back-vid,
+video.blackhole-box video {
+  pointer-events: none; /* Disable interaction */
+  -webkit-user-select: none; /* Prevent selection on mobile */
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.menu-icon{
+  display:inline;
+}
+.sidebar{
+  display:inline;
+}
 }
 
 @media screen and (max-width: 882px) {
